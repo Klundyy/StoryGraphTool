@@ -1,58 +1,170 @@
 {
-    "Title": "Campus Life on the West Side",
-    "Credits": "Created by Adam Smith (amsmith@ucsc.edu).",
-    "InitialLocation": "Kresge",
+    "Title": "Grimoire to a New World",
+    "Credits": "Created by William Klunder",
+    "InitialLocation": "Home", 
+    "Inventory":[],
     "Locations": {
-        "Kresge": {
-            "Body": "This is Kresge College, lots of nice trees.",
+        "Home": {
+            "Body": "Head to the village",
             "Choices": [
                 {
-                    "Text": "South",
-                    "Target": "Porter"
+                    "Text": "Village",
+                    "Target": "Village"
                 }
             ]
         },
-        "Porter": {
-            "Body": "This is Porter College, the trees are nice here too.",
+        "Shop":{
+            "Body":"You found the shop room",
             "Choices": [
                 {
-                    "Text": "North",
-                    "Target": "Kresge"
+                    "Text":"Return",
+                    "Target":"Village"
                 },
                 {
-                    "Text": "South",
-                    "Target": "Rachel Carson"
+                    "Text":"Axe",
+                    "Target":["Axe","noAxe"],
+                    "GameWorldItem":"Axe"
                 }
             ]
         },
-        "Rachel Carson": {
-            "Body": "Rachel Carson College, more sun and fewer trees.",
+        "Axe":{
+            "Body":"You bought the axe",
+            "Choices": [
+                    {
+                        "Text":"Return",
+                        "Target":"Shop"
+                    }
+                ]
+        },
+        "noAxe":{
+            "Body":"You need a coin to buy the axe.",
             "Choices": [
                 {
-                    "Text": "North",
-                    "Target": "Porter"
-                },
-                {
-                    "Text": "South",
-                    "Target": "Oakes"
+                    "Text":"Return",
+                    "Target":"Shop"
                 }
             ]
         },
-        "Oakes": {
-            "Body": "Oakes College, even the buildings have tree bark on them.",
+        "Village": {
+            "Body": "Village",
             "Choices": [
                 {
-                    "Text": "North",
-                    "Target": "Rachel Carson"
+                    "Text": "Home",
+                    "Target": "Home"
                 },
                 {
-                    "Text": "South",
-                    "Target": "Beyond"
+                    "Text":"Shop",
+                    "Target": "Shop"
+                },
+                {
+                    "Text": "Downtown",
+                    "Target": "Downtown"
                 }
             ]
         },
-        "Beyond": {
-            "Body": "Grass, don't forget to check for ticks!"
+        "Downtown": {
+            "Body": "Downtown",
+            "Choices": [
+                {
+                    "Text": "Village",
+                    "Target": "Village"
+                },
+                {
+                    "Text": "Tower",
+                    "Target": "Tower"
+                },
+                {
+                    "Text": "Forest",
+                    "Target": "Forest"
+                }
+            ]
+        },
+        "Tower": {
+            "Body": "Tower",
+            "Choices": [
+                {
+                    "Text": "Downtown",
+                    "Target": "Downtown"
+                },
+                {
+                    "Text": "Casting Area",
+                    "Target": "castingArea"
+                }
+            ]
+        },
+        "Forest": {
+            "Body": "Forest",
+            "Choices": [
+                {
+                    "Text": "Downtown",
+                    "Target": "Downtown"
+                },
+                {
+                    "Text":"Coin",
+                    "Target":"Coin",
+                    "GameWorldItem":"Coin"
+                },
+                {
+                    "Text":"Path",
+                    "Target":["blockedPath","Path"],
+                    "Split":"Path"
+                }
+            ]
+        },
+        "Coin":{
+            "Body": "You've collected a coin",
+            "Choices":[
+                {
+                "Text":"Return",
+                "Target":"Forest"
+                }
+            ]
+        },"castingArea":{
+            "Body": "You've entered the casting area",
+            "Choices":[
+                {
+                    "Text":"Tower",
+                    "Target":"Tower"
+                },
+                {
+                    "Text":"Cast Spell",
+                    "Target":"spellCast",
+                    "Lock":"Grimoire"
+                }
+            ]
+        },"blockedPath":{
+            "Body": "You found a blocked path, you might need an axe to get through here",
+            "Choices":[
+                {
+                "Text":"Return",
+                "Target":"Forest"
+                }
+            ]
+        },"Path":{
+            "Body":"You broke down the path and found a grimoire",
+            "Choices":[
+                {
+                "Text":"Return",
+                "Target":"Forest"
+                },
+                {
+                "Text":"Grimoire",
+                "Target":"Grimoire",
+                "GameWorldItem":"Grimoire"
+                }
+                
+            ]
+        },"Grimoire":{
+            "Body": "You've collected the grimoire",
+            "Choices":[
+                {
+                "Text":"Return",
+                "Target":"Path"
+                }
+            ]
+        },
+        "spellCast": {
+            "Body": "You found your way out of this world!"
         }
     }
 }
